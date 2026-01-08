@@ -7,6 +7,25 @@
     <style>
       :root {
         color-scheme: light;
+        --background: #fff44f;
+        --surface: #fff9a8;
+        --text: #111827;
+        --accent: #111827;
+        --accent-contrast: #ffffff;
+        --highlight: #ff7a00;
+      }
+
+      body.theme-alt {
+        --background: #ff7bf4;
+        --surface: #ffd6fa;
+        --text: #1f0a1a;
+        --accent: #2d0b5a;
+        --accent-contrast: #ffffff;
+        --highlight: #00f5d4;
+      }
+
+      * {
+        box-sizing: border-box;
       }
 
       html {
@@ -16,19 +35,74 @@
       body {
         margin: 0;
         font-family: "Helvetica Neue", Arial, sans-serif;
-        background: #fff44f;
+        background: var(--background);
+        color: var(--text);
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: var(--surface);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: inherit;
+        font-weight: 600;
+        padding: 0.4rem 0.8rem;
+        border-radius: 999px;
+        transition: background 150ms ease, transform 150ms ease;
+      }
+
+      .nav-links a:hover,
+      .nav-links a.active {
+        background: var(--highlight);
         color: #111827;
+        transform: translateY(-1px);
+      }
+
+      .theme-toggle {
+        border: 0;
+        padding: 0.5rem 1rem;
+        border-radius: 999px;
+        background: var(--accent);
+        color: var(--accent-contrast);
+        font-weight: 700;
+        cursor: pointer;
       }
 
       main {
-        min-height: 100vh;
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
-        gap: 1rem;
+        gap: 3rem;
         text-align: center;
-        padding: 2rem;
+        padding: 3rem 2rem 5rem;
+      }
+
+      .hero {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        padding-top: 2rem;
       }
 
       h1 {
@@ -38,6 +112,22 @@
 
       p {
         margin: 0;
+        font-size: 1.15rem;
+        max-width: 40rem;
+      }
+
+      section {
+        width: min(900px, 100%);
+        background: var(--surface);
+        border-radius: 24px;
+        padding: 2rem;
+        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+        text-align: left;
+      }
+
+      section h2 {
+        margin-top: 0;
+        font-size: 1.75rem;
         font-size: 1.25rem;
       }
 
@@ -48,6 +138,12 @@
         font-weight: 700;
         border: 0;
         border-radius: 999px;
+        background: var(--accent);
+        color: var(--accent-contrast);
+        cursor: pointer;
+        box-shadow: 0 10px 20px rgba(17, 24, 39, 0.2);
+        transition: transform 150ms ease, box-shadow 150ms ease;
+        text-decoration: none;
         background: #111827;
         color: #fff;
         cursor: pointer;
