@@ -9,6 +9,10 @@
         color-scheme: light;
       }
 
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
         margin: 0;
         font-family: "Helvetica Neue", Arial, sans-serif;
@@ -49,11 +53,39 @@
         cursor: pointer;
         box-shadow: 0 10px 20px rgba(17, 24, 39, 0.2);
         transition: transform 150ms ease, box-shadow 150ms ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .cta-button:hover {
         transform: translateY(-2px);
         box-shadow: 0 14px 24px rgba(17, 24, 39, 0.25);
+      }
+
+      .cta-button:focus-visible {
+        outline: 3px solid #111827;
+        outline-offset: 4px;
+        box-shadow: 0 0 0 4px rgba(255, 244, 79, 0.9);
+      }
+
+      #get-started {
+        padding: 4rem 2rem 6rem;
+        background: #fff;
+        color: #111827;
+        text-align: center;
+      }
+
+      #get-started h2 {
+        margin: 0 0 1rem;
+        font-size: clamp(2rem, 4vw, 2.75rem);
+      }
+
+      #get-started p {
+        margin: 0 auto 1.5rem;
+        max-width: 640px;
+        line-height: 1.6;
       }
     </style>
   </head>
@@ -61,7 +93,16 @@
     <main>
       <h1>CATT Codex Training</h1>
       <p>Coming soon…</p>
-      <button class="cta-button" type="button">Get Started Here!</button>
+      <a class="cta-button" href="#get-started">Get Started Here!</a>
     </main>
+
+    <section id="get-started">
+      <h2>Get Started</h2>
+      <p>
+        Thanks for your interest in CATT Codex Training. We are preparing a curated
+        curriculum and hands-on sessions to help you dive in with confidence.
+      </p>
+      <p>Stay tuned for enrollment details and early access updates.</p>
+    </section>
   </body>
 </html>
