@@ -28,6 +28,10 @@
         box-sizing: border-box;
       }
 
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
         margin: 0;
         font-family: "Helvetica Neue", Arial, sans-serif;
@@ -145,6 +149,10 @@
         cursor: pointer;
         box-shadow: 0 10px 20px rgba(17, 24, 39, 0.2);
         transition: transform 150ms ease, box-shadow 150ms ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .cta-button:hover {
@@ -152,168 +160,45 @@
         box-shadow: 0 14px 24px rgba(17, 24, 39, 0.25);
       }
 
-      .form-stack {
-        display: grid;
-        gap: 1rem;
+      .cta-button:focus-visible {
+        outline: 3px solid #111827;
+        outline-offset: 4px;
+        box-shadow: 0 0 0 4px rgba(255, 244, 79, 0.9);
       }
 
-      .form-row {
-        display: grid;
-        gap: 0.5rem;
-      }
-
-      input[type="email"] {
-        padding: 0.75rem 1rem;
-        border-radius: 12px;
-        border: 2px solid transparent;
-        font-size: 1rem;
-      }
-
-      input[type="email"]:focus {
-        outline: none;
-        border-color: var(--highlight);
-        box-shadow: 0 0 0 4px rgba(255, 122, 0, 0.3);
-      }
-
-      .success-message {
-        display: none;
-        padding: 0.75rem 1rem;
-        border-radius: 12px;
-        background: #d1fae5;
-        color: #065f46;
-        font-weight: 600;
-      }
-
-      .success-message.visible {
-        display: block;
-      }
-
-      details {
-        border-radius: 16px;
-        padding: 1rem 1.25rem;
-        background: #ffffff;
-        margin-bottom: 0.75rem;
-      }
-
-      details summary {
-        cursor: pointer;
-        font-weight: 700;
-      }
-
-      footer {
-        padding: 2rem;
+      #get-started {
+        padding: 4rem 2rem 6rem;
+        background: #fff;
+        color: #111827;
         text-align: center;
-        font-weight: 600;
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <nav>
-        <div class="nav-links">
-          <a href="#top" data-section="top">Home</a>
-          <a href="#about" data-section="about">About</a>
-          <a href="#get-started" data-section="get-started">Get Started</a>
-          <a href="#faq" data-section="faq">FAQ</a>
-        </div>
-        <button class="theme-toggle" type="button">Toggle Theme</button>
-      </nav>
-    </header>
-
-    <main id="top">
-      <section class="hero" id="hero">
-        <h1>CATT Codex Training</h1>
-        <p>Coming soon… A bright, hands-on space to explore interactive learning and quick wins.</p>
-        <a class="cta-button" href="#get-started">Get Started Here!</a>
-      </section>
-
-      <section id="about">
-        <h2>Why this training stands out</h2>
-        <p>
-          Explore short, punchy lessons, interactive checkpoints, and rapid feedback loops that keep the
-          momentum high.
-        </p>
-      </section>
-
-      <section id="get-started">
-        <h2>Get started with updates</h2>
-        <form class="form-stack" id="signup-form">
-          <div class="form-row">
-            <label for="email">Email address</label>
-            <input id="email" name="email" type="email" placeholder="you@example.com" required>
-          </div>
-          <button class="cta-button" type="submit">Notify Me</button>
-          <p class="success-message" id="success-message">You are on the list! We will be in touch soon.</p>
-        </form>
-      </section>
-
-      <section id="faq">
-        <h2>Frequently asked questions</h2>
-        <details>
-          <summary>What will the training include?</summary>
-          <p>Expect bite-sized modules, live challenges, and a bright interface that keeps things moving.</p>
-        </details>
-        <details>
-          <summary>How will I know when it launches?</summary>
-          <p>Drop your email above and we will send the launch details directly to you.</p>
-        </details>
-        <details>
-          <summary>Can I share this with my team?</summary>
-          <p>Absolutely. Share the link and keep everyone updated together.</p>
-        </details>
-      </section>
-    </main>
-
-    <footer>Stay tuned for more bright updates.</footer>
-
-    <script>
-      const toggleButton = document.querySelector('.theme-toggle');
-      const prefersAlt = localStorage.getItem('theme') === 'alt';
-      const navLinks = document.querySelectorAll('.nav-links a');
-      const successMessage = document.getElementById('success-message');
-      const signupForm = document.getElementById('signup-form');
-
-      if (prefersAlt) {
-        document.body.classList.add('theme-alt');
       }
 
-      toggleButton.addEventListener('click', () => {
-        document.body.classList.toggle('theme-alt');
-        const isAlt = document.body.classList.contains('theme-alt');
-        localStorage.setItem('theme', isAlt ? 'alt' : 'default');
-      });
+      #get-started h2 {
+        margin: 0 0 1rem;
+        font-size: clamp(2rem, 4vw, 2.75rem);
+      }
 
-      signupForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        successMessage.classList.add('visible');
-        signupForm.reset();
-      });
-
-      const sections = Array.from(document.querySelectorAll('main > section'));
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const id = entry.target.getAttribute('id');
-              navLinks.forEach((link) => {
-                link.classList.toggle('active', link.dataset.section === id);
-              });
-            }
-          });
-        },
-        { threshold: 0.5 }
-      );
-
-      sections.forEach((section) => observer.observe(section));
-    </script>
+      #get-started p {
+        margin: 0 auto 1.5rem;
+        max-width: 640px;
+        line-height: 1.6;
+      }
     </style>
   </head>
   <body>
     <main>
       <h1>CATT Codex Training</h1>
       <p>Coming soon…</p>
-      <button class="cta-button" type="button">Get Started Here!</button>
+      <a class="cta-button" href="#get-started">Get Started Here!</a>
     </main>
+
+    <section id="get-started">
+      <h2>Get Started</h2>
+      <p>
+        Thanks for your interest in CATT Codex Training. We are preparing a curated
+        curriculum and hands-on sessions to help you dive in with confidence.
+      </p>
+      <p>Stay tuned for enrollment details and early access updates.</p>
+    </section>
   </body>
 </html>
